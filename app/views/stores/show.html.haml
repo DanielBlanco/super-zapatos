@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @store.name
+%p
+  %b Address:
+  = @store.address
+%p
+  %b Lock version:
+  = @store.lock_version
+
+= link_to 'Edit', edit_store_path(@store)
+\|
+= link_to 'Back', stores_path
