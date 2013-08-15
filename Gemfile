@@ -37,6 +37,9 @@ gem 'oj'
 gem 'haml'
 gem "haml-rails"
 
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Rails 3
+gem 'kaminari'
+
 # Exception notification for production mode.
 gem 'exception_notification'
 
