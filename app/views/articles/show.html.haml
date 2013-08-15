@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @article.name
+%p
+  %b Description:
+  = @article.description
+%p
+  %b Price:
+  = @article.price
+%p
+  %b Total in shelf:
+  = @article.total_in_shelf
+%p
+  %b Total in vault:
+  = @article.total_in_vault
+%p
+  %b Store:
+  = @article.store_id
+
+= link_to 'Edit', edit_article_path(@article)
+\|
+= link_to 'Back', articles_path

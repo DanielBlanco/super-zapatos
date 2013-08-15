@@ -5,6 +5,8 @@
 # => address:text
 class Store < ActiveRecord::Base
   
+  has_many :articles
+  
   # Validations
   validates :name, :presence => true, :uniqueness => {:case_sensitive => false}, :length => {:maximum => 100}
   validates :address, :length => {:maximum => 500}

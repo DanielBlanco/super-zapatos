@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815163542) do
+ActiveRecord::Schema.define(version: 20130815225230) do
+
+  create_table "articles", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "price_cents",    default: 0,     null: false
+    t.string   "price_currency", default: "USD", null: false
+    t.integer  "total_in_shelf", default: 0,     null: false
+    t.integer  "total_in_vault", default: 0,     null: false
+    t.integer  "store_id",                       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stores", force: true do |t|
     t.string   "name",       null: false
