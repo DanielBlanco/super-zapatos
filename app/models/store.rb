@@ -6,7 +6,7 @@
 class Store < ActiveRecord::Base
   
   # Validations
-  validates :name, :presence => true, :length => {:maximum => 100}
+  validates :name, :presence => true, :uniqueness => {:case_sensitive => false}, :length => {:maximum => 100}
   validates :address, :length => {:maximum => 500}
   
   # Pagination.

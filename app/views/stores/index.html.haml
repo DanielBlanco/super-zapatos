@@ -1,6 +1,11 @@
 %h1 Listing stores
 
-%table
+.page-menu
+  = link_to root_path, :class => 'btn btn-primary' do
+    %i.icon-home
+  = link_to 'New Store', new_store_path, :class => 'btn btn-default'
+
+%table.table.table-bordered.table-stripped
   %tr
     %th Name
     %th Address
@@ -20,4 +25,3 @@
 
 %br
 
-= link_to 'New Store', new_store_path

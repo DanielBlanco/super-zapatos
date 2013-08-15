@@ -30,6 +30,8 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.13)
+    bootstrap-sass (2.3.2.1)
+      sass (~> 3.2)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -61,6 +63,8 @@ GEM
       factory_girl (>= 2.0)
       rspec (>= 2.0)
     ffi (1.9.0)
+    font-awesome-rails (3.2.1.2)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     guard (1.8.2)
       formatador (>= 0.2.4)
@@ -194,11 +198,13 @@ PLATFORMS
 
 DEPENDENCIES
   accept_values_for
+  bootstrap-sass (~> 2.3.2.1)
   capybara
   coffee-rails (~> 4.0.0)
   exception_notification
   factory_girl_rails
   factory_girl_rspec
+  font-awesome-rails
   guard-rspec
   haml
   haml-rails

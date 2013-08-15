@@ -1,0 +1,15 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import "font-awesome";
+
+// A little fix to avoid conflicts with scaffolds.css.scss.
+a.btn-primary {
+  color: white;
+  &:visited {
+    color: white;
+  }
+  &:hover {
+    color: white;
+  }
+}
+

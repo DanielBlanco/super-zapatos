@@ -43,6 +43,12 @@ gem 'kaminari'
 # Exception notification for production mode.
 gem 'exception_notification'
 
+# Twitter bootstrap (Load after compass gem if need to add Compass).
+gem 'bootstrap-sass', '~> 2.3.2.1'
+
+# Integrate Font Awesome to use with Bootstrap.
+gem 'font-awesome-rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
