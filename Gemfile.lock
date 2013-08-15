@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    accept_values_for (0.4.3)
+      activemodel (>= 3.0.0)
+      rspec
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)
@@ -187,6 +190,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  accept_values_for
   capybara
   coffee-rails (~> 4.0.0)
   exception_notification

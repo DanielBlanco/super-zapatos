@@ -62,10 +62,14 @@ gem 'capybara', :group => [:test]
 gem 'guard-rspec', :group => [:test] # 'bundle exec guard' to run.
 
 # Adding rspec for Unit Testing.
+# Rails 4: you may want to create a binstub for the rspec command so it can be run via bin/rspec => bundle binstubs rspec-core
 gem "rspec-rails", "~> 2.0", :group => [:test, :development]
 
 # Collection of testing matchers extracted from Shoulda
 gem 'shoulda-matchers', :group => [:test]
+
+# rspec matcher that helps you to test ActiveModel validation.
+gem 'accept_values_for', :group => [:test]
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
