@@ -1,27 +1,33 @@
 %h1 Listing stores
 
 .page-menu
-  = link_to root_path, :class => 'btn btn-primary' do
-    %i.icon-home
   = link_to 'New Store', new_store_path, :class => 'btn btn-default'
 
 %table.table.table-bordered.table-stripped
   %tr
-    %th Name
-    %th Address
-    %th Lock version
-    %th
-    %th
-    %th
+    %th.th-store-name Name
+    %th.th-store-address Address
+    %th.th-store-actions
+
+  - if @stores.empty?
+    %tr
+      %td.t-center{'colspan'=>'5'} The are no stores to show.
 
   - @stores.each do |store|
     %tr
-      %td= store.name
-      %td= store.address
-      %td= store.lock_version
-      %td= link_to 'Show', store
-      %td= link_to 'Edit', edit_store_path(store)
-      %td= link_to 'Destroy', store, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.td-name= store.name
+      %td.td-address= store.address
+      %td.td-actions
+        .btn-group
+          = link_to store, :class => 'btn btn-default' do
+            %i.icon-eye-open
+            Show
+          = link_to edit_store_path(store), :class => 'btn btn-default' do
+            %i.icon-edit
+            Edit
+          = link_to store, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger' do
+            %i.icon-remove-sign
+            Destroy
 
 %br
 

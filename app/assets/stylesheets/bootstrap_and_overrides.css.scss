@@ -3,7 +3,7 @@
 @import "font-awesome";
 
 // A little fix to avoid conflicts with scaffolds.css.scss.
-a.btn-primary {
+a.btn-primary, a.btn-info, a.btn-success, a.btn-warning, a.btn-danger, a.btn-inverse {
   color: white;
   &:visited {
     color: white;

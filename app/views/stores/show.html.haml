@@ -1,15 +1,18 @@
+%h1 Store Details
+
+.page-menu
+  = link_to 'List Stores', stores_path, :class => 'btn btn-default'
+  = link_to 'List Articles', root_path, :class => 'btn btn-default'
+  = link_to 'Edit', edit_store_path(@store), :class => 'btn btn-default'
+
 %p#notice= notice
 
-%p
-  %b Name:
-  = @store.name
-%p
-  %b Address:
-  = @store.address
-%p
-  %b Lock version:
-  = @store.lock_version
+.row
+  .span12
+    %p
+      %b Name:
+      = @store.name
+    %p
+      %b Address:
+      = @store.address
 
-= link_to 'Edit', edit_store_path(@store)
-\|
-= link_to 'Back', stores_path

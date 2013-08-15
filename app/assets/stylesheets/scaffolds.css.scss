@@ -40,27 +40,42 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  label {
+    color: #b94a48;
+  }
+  input {
+    border-color: #b94a48;
+  }
+  textarea {
+    border-color: #b94a48;
+  }
+  select {
+    border-color: #b94a48;
+  }
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  font-family: "Open Sans", sans-serif;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #eed3d7;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
   h2 {
     text-align: left;
     font-weight: bold;
-    padding: 5px 5px 5px 15px;
+    padding: 0px 5px 0px 15px;
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
+    color: #b94a48;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-rendering: optimizelegibility;
   }
   ul li {
     font-size: 12px;
