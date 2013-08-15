@@ -49,6 +49,9 @@ gem 'bootstrap-sass', '~> 2.3.2.1'
 # Integrate Font Awesome to use with Bootstrap.
 gem 'font-awesome-rails'
 
+# This plugin library adds ActiveRecord models a way to check if a :belongs_to association actually exists upon saving.
+gem "validates_existence", ">= 0.4"
+
 # To handle the price in Article.
 gem 'money-rails'
 

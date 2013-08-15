@@ -5,4 +5,10 @@ FactoryGirl.define do
     address "San Jose and other places..."
   end
   
+  factory :article do
+    sequence(:name) { |n| "Shoe#{n}" }
+    description "nice shoe..."
+    association :store, :factory => :store
+  end
+  
 end
