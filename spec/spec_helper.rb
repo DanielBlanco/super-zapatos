@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/rspec'
 require 'capybara/rails'
 require 'accept_values_for'
 require 'rspec/autorun' # Not sure if Guard jumps because of this.
@@ -42,4 +43,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  
+  config.include Capybara::DSL
 end

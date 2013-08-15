@@ -4,8 +4,7 @@ describe "stores/new" do
   before(:each) do
     assign(:store, stub_model(Store,
       :name => "MyString",
-      :address => "MyText",
-      :lock_version => 1
+      :address => "MyText"
     ).as_new_record)
   end
 
@@ -16,7 +15,6 @@ describe "stores/new" do
     assert_select "form[action=?][method=?]", stores_path, "post" do
       assert_select "input#store_name[name=?]", "store[name]"
       assert_select "textarea#store_address[name=?]", "store[address]"
-      assert_select "input#store_lock_version[name=?]", "store[lock_version]"
     end
   end
 end
