@@ -26,7 +26,7 @@ feature "Stores" do
     page.should have_content "Name can't be blank"
   end
     
-  scenario "shouuld not create a store with an existing name" do
+  scenario "should not create a store with an existing name" do
     store = FactoryGirl.create(:store)
     visit new_store_path
     within("#page-content") do
