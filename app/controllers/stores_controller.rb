@@ -1,5 +1,6 @@
 class StoresController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
+  respond_to :html
 
   # GET /stores
   def index
@@ -26,35 +27,28 @@ class StoresController < ApplicationController
     respond_to do |format|
       if @store.save
         format.html { redirect_to @store, notice: 'Store was successfully created.' }
-        #format.json { render action: 'show', status: :created, location: @store }
       else
         format.html { render action: 'new' }
-        #format.json { render json: @store.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /stores/1
-  # PATCH/PUT /stores/1.json
   def update
     respond_to do |format|
       if @store.update(store_params)
         format.html { redirect_to @store, notice: 'Store was successfully updated.' }
-        #format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        #format.json { render json: @store.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /stores/1
-  # DELETE /stores/1.json
   def destroy
     @store.destroy
     respond_to do |format|
       format.html { redirect_to stores_url }
-      format.json { head :no_content }
     end
   end
 

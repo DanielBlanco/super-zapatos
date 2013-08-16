@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
   
   before_action :set_store
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  respond_to :html
+
 
   # GET /stores/1/articles
   def index
@@ -9,7 +11,6 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1
-  # GET /articles/1.json
   def show
   end
 
@@ -23,42 +24,35 @@ class ArticlesController < ApplicationController
   end
 
   # POST /articles
-  # POST /articles.json
   def create
     @article = @store.articles.new(article_params)
 
     respond_to do |format|
       if @article.save
         format.html { redirect_to [@store,@article], notice: 'Article was successfully created.' }
-        format.json { render action: 'show', status: :created, location: [@store, @article] }
       else
         format.html { render action: 'new' }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
+      format.all { render_404 }
     end
   end
 
   # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to [@store,@article], notice: 'Article was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /articles/1
-  # DELETE /articles/1.json
   def destroy
     @article.destroy
     respond_to do |format|
       format.html { redirect_to store_articles_url(@store) }
-      format.json { head :no_content }
     end
   end
 
