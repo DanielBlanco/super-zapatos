@@ -1,0 +1,4 @@
+- if success_status
+  = yield
+- else
+  = raw({sucess: false, error_code: response.status, error_msg: "Ooops!! TODO!"}.to_json)

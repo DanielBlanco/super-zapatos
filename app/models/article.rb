@@ -17,5 +17,8 @@ class Article < ActiveRecord::Base
   # Pagination.
   paginates_per 30
   max_paginates_per 100
-  
+
+  def humanized_price
+    price.format(:no_cents_if_whole => true, :symbol => false)
+  end
 end

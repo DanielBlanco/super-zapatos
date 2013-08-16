@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /stores/1/articles
-  # GET /stores/1/articles.json
   def index
     @articles = @store.articles.all
   end
