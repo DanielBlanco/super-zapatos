@@ -13,4 +13,7 @@ SuperZapatos::Application.routes.draw do
     # TODO: add more...
   end
   
+  get '/404' => "errors#not_found"
+  get '/500' => "errors#internal_server_error"
+  
 end
