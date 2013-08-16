@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
   # GET /stores/1/articles
   def index
-    @articles = @store.articles.all
+    @articles = @store.articles.to_a
   end
 
   # GET /articles/1

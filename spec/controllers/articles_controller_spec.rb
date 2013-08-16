@@ -20,10 +20,12 @@ require 'spec_helper'
 
 describe ArticlesController do
 
+  let(:store) { FactoryGirl.create(:store) }
+
   # This should return the minimal set of attributes required to create a valid
   # Article. As you add validations to Article, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { { "name" => "MyString", "total_in_shelf" => 1, "total_in_vault" => 2, "price" => 99.99, "store_id" => 1} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -33,7 +35,7 @@ describe ArticlesController do
   describe "GET index" do
     it "assigns all articles as @articles" do
       article = Article.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {:store_id => store.to_param}, valid_session
       assigns(:articles).should eq([article])
     end
   end
@@ -41,14 +43,14 @@ describe ArticlesController do
   describe "GET show" do
     it "assigns the requested article as @article" do
       article = Article.create! valid_attributes
-      get :show, {:id => article.to_param}, valid_session
+      get :show, {:store_id => store.to_param, :id => article.to_param}, valid_session
       assigns(:article).should eq(article)
     end
   end
 
   describe "GET new" do
     it "assigns a new article as @article" do
-      get :new, {}, valid_session
+      get :new, {:store_id => store.to_param}, valid_session
       assigns(:article).should be_a_new(Article)
     end
   end
@@ -56,7 +58,7 @@ describe ArticlesController do
   describe "GET edit" do
     it "assigns the requested article as @article" do
       article = Article.create! valid_attributes
-      get :edit, {:id => article.to_param}, valid_session
+      get :edit, {:store_id => store.to_param, :id => article.to_param}, valid_session
       assigns(:article).should eq(article)
     end
   end
@@ -65,19 +67,19 @@ describe ArticlesController do
     describe "with valid params" do
       it "creates a new Article" do
         expect {
-          post :create, {:article => valid_attributes}, valid_session
+          post :create, {:store_id => store.to_param, :article => valid_attributes}, valid_session
         }.to change(Article, :count).by(1)
       end
 
       it "assigns a newly created article as @article" do
-        post :create, {:article => valid_attributes}, valid_session
+        post :create, {:store_id => store.to_param, :article => valid_attributes}, valid_session
         assigns(:article).should be_a(Article)
         assigns(:article).should be_persisted
       end
 
       it "redirects to the created article" do
-        post :create, {:article => valid_attributes}, valid_session
-        response.should redirect_to(Article.last)
+        post :create, {:store_id => store.to_param, :article => valid_attributes}, valid_session
+        response.should redirect_to(store_article_url(store, Article.last))
       end
     end
 
@@ -85,14 +87,14 @@ describe ArticlesController do
       it "assigns a newly created but unsaved article as @article" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        post :create, {:article => { "name" => "invalid value" }}, valid_session
+        post :create, {:store_id => store.to_param, :article => { "name" => "invalid value" }}, valid_session
         assigns(:article).should be_a_new(Article)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        post :create, {:article => { "name" => "invalid value" }}, valid_session
+        post :create, {:store_id => store.to_param, :article => { "name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -107,19 +109,19 @@ describe ArticlesController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Article.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => article.to_param, :article => { "name" => "MyString" }}, valid_session
+        put :update, {:store_id => store.to_param, :id => article.to_param, :article => { "name" => "MyString" }}, valid_session
       end
 
       it "assigns the requested article as @article" do
         article = Article.create! valid_attributes
-        put :update, {:id => article.to_param, :article => valid_attributes}, valid_session
+        put :update, {:store_id => store.to_param, :id => article.to_param, :article => valid_attributes}, valid_session
         assigns(:article).should eq(article)
       end
 
       it "redirects to the article" do
         article = Article.create! valid_attributes
-        put :update, {:id => article.to_param, :article => valid_attributes}, valid_session
-        response.should redirect_to(article)
+        put :update, {:store_id => store.to_param, :id => article.to_param, :article => valid_attributes}, valid_session
+        response.should redirect_to([store,article])
       end
     end
 
@@ -128,7 +130,7 @@ describe ArticlesController do
         article = Article.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        put :update, {:id => article.to_param, :article => { "name" => "invalid value" }}, valid_session
+        put :update, {:store_id => store.to_param, :id => article.to_param, :article => { "name" => "invalid value" }}, valid_session
         assigns(:article).should eq(article)
       end
 
@@ -136,7 +138,7 @@ describe ArticlesController do
         article = Article.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        put :update, {:id => article.to_param, :article => { "name" => "invalid value" }}, valid_session
+        put :update, {:store_id => store.to_param, :id => article.to_param, :article => { "name" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -146,14 +148,14 @@ describe ArticlesController do
     it "destroys the requested article" do
       article = Article.create! valid_attributes
       expect {
-        delete :destroy, {:id => article.to_param}, valid_session
+        delete :destroy, {:store_id => store.to_param, :id => article.to_param}, valid_session
       }.to change(Article, :count).by(-1)
     end
 
     it "redirects to the articles list" do
       article = Article.create! valid_attributes
-      delete :destroy, {:id => article.to_param}, valid_session
-      response.should redirect_to(articles_url)
+      delete :destroy, {:store_id => store.to_param, :id => article.to_param}, valid_session
+      response.should redirect_to(store_articles_url(store))
     end
   end
 
