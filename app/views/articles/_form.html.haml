@@ -1,28 +1,34 @@
-= form_for @article do |f|
+= form_for [@store, @article], :html => {class: 'form-horizontal'}  do |f|
   - if @article.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
-      %ul
-        - @article.errors.full_messages.each do |msg|
-          %li= msg
+    .row
+      #error_explanation.offset1.span7
+        %h2= "You got an error!"
+        %ul
+          - @article.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :total_in_shelf
-    = f.text_field :total_in_shelf
-  .field
-    = f.label :total_in_vault
-    = f.text_field :total_in_vault
-  .field
-    = f.label :store_id
-    = f.text_field :store_id
-  .actions
-    = f.submit 'Save'
+  .row
+    .span12
+      .control-group
+        = f.label :name, :class => "control-label"
+        .controls
+          = f.text_field :name, :placeholder => 'Article name', :class => 'span6'
+      .control-group
+        = f.label :description, :class => "control-label"
+        .controls
+          = f.text_area :description, :rows => 5, :class => 'span6'
+      .control-group
+        = f.label :price, :class => "control-label"
+        .controls
+          = f.text_field :price, :class => 'span6'
+      .control-group
+        = f.label :total_in_shelf, :class => "control-label"
+        .controls
+          = f.text_field :total_in_shelf, :class => 'span6'
+      .control-group
+        = f.label :total_in_vault, :class => "control-label"
+        .controls
+          = f.text_field :total_in_vault, :class => 'span6'
+      .control-group
+        .controls
+          = f.submit 'Save', :class => "btn btn-default"

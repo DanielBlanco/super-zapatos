@@ -30,8 +30,8 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @article }
+        format.html { redirect_to [@store,@article], notice: 'Article was successfully created.' }
+        format.json { render action: 'show', status: :created, location: [@store, @article] }
       else
         format.html { render action: 'new' }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to [@store,@article], notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,7 +58,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url }
+      format.html { redirect_to store_articles_url(@store) }
       format.json { head :no_content }
     end
   end
@@ -66,7 +66,7 @@ class ArticlesController < ApplicationController
   private
     # Find the store object.
     def set_store
-      @store = Store.find(params[:id])
+      @store = Store.find(params[:store_id])
     end
   
     # Use callbacks to share common setup or constraints between actions.

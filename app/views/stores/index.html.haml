@@ -3,11 +3,11 @@
 .page-menu
   = link_to 'New Store', new_store_path, :class => 'btn btn-default'
 
-%table.table.table-bordered.table-stripped
+%table.table.table-bordered
   %tr
-    %th.th-store-name Name
-    %th.th-store-address Address
-    %th.th-store-actions
+    %th Name
+    %th Address
+    %th
 
   - if @stores.empty?
     %tr

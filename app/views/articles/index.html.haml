@@ -1,29 +1,39 @@
-%h1 Listing articles
+%h1= 'Listing articles (' + @store.name + ')'
 
-%table
+.page-menu
+  = link_to 'List Stores', stores_path, :class => 'btn btn-default'
+  = link_to 'New Article', new_store_article_path(@store), :class => 'btn btn-default'
+
+%table.table.table-bordered
   %tr
     %th Name
-    %th Description
     %th Price
     %th Total in shelf
     %th Total in vault
     %th Store
     %th
-    %th
-    %th
+    
+  - if @articles.empty?
+    %tr
+      %td.t-center{'colspan'=>'6'} The are no articles in this store.
 
   - @articles.each do |article|
     %tr
       %td= article.name
-      %td= article.description
       %td= article.price
       %td= article.total_in_shelf
       %td= article.total_in_vault
       %td= article.store_id
-      %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.td-actions
+        .btn-group
+          = link_to [@store, article], :class => 'btn btn-default' do
+            %i.icon-eye-open
+            Show
+          = link_to edit_store_article_path(@store, article), :class => 'btn btn-default' do
+            %i.icon-edit
+            Edit
+          = link_to [@store, article], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger' do
+            %i.icon-remove-sign
+            Destroy
 
 %br
-
-= link_to 'New Article', new_article_path

@@ -2,7 +2,7 @@
 
 .page-menu
   = link_to 'List Stores', stores_path, :class => 'btn btn-default'
-  = link_to 'List Articles', root_path, :class => 'btn btn-default'
+  = link_to 'List Articles', store_articles_path(@store), :class => 'btn btn-default'
   = link_to 'Edit', edit_store_path(@store), :class => 'btn btn-default'
 
 %p#notice= notice
