@@ -22,6 +22,9 @@
           = link_to store, :class => 'btn btn-default' do
             %i.icon-eye-open
             Show
+          = link_to store_articles_path(store), :class => 'btn btn-default' do
+            %i.icon-barcode
+            Articles
           = link_to edit_store_path(store), :class => 'btn btn-default' do
             %i.icon-edit
             Edit
