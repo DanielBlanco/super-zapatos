@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe "Articles" do
   describe "GET /articles" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get articles_path
+    let(:store){ FactoryGirl.create(:store) }
+    it "should return a 200 status code" do
+      get store_articles_path(store)
       response.status.should be(200)
     end
   end
